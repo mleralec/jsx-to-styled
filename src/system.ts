@@ -1,8 +1,19 @@
 import type { CSSObject } from 'styled-components'
 
-import { background, color, flex, grid, layout, position, space, typography } from './config'
+import {
+  background,
+  border,
+  color,
+  flex,
+  grid,
+  layout,
+  position,
+  space,
+  typography,
+} from './config'
 import type {
   BackgroundProps,
+  BorderProps,
   ColorProps,
   FlexProps,
   GridProps,
@@ -14,6 +25,7 @@ import type {
 import type { Theme } from './theme'
 
 export type SystemProps = BackgroundProps &
+  BorderProps &
   ColorProps &
   FlexProps &
   GridProps &
@@ -24,6 +36,7 @@ export type SystemProps = BackgroundProps &
 
 export const system = (props: SystemProps & { theme?: Theme }): CSSObject => ({
   ...background(props),
+  ...border(props),
   ...color(props),
   ...flex(props),
   ...grid(props),

@@ -7,5 +7,7 @@ export type ThemeKeys =
   | 'fontWeights'
   | 'lineHeights'
   | 'letterSpacings'
+  | 'borderWidths'
+  | 'radii'
 
 export type Theme = Partial<Record<ThemeKeys, Record<string, string>>>

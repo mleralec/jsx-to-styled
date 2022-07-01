@@ -1,0 +1,63 @@
+{
+  "name": "jsx-to-styled",
+  "description": "jsx-to-styled adds styled props to your React components",
+  "version": "0.0.0",
+  "author": "mleralec",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mleralec/jsx-to-styled.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/mleralec/jsx-to-styled/issues"
+  },
+  "homepage": "https://github.com/mleralec/jsx-to-styled#readme",
+  "scripts": {
+    "build": "yarn clean && yarn build:js && yarn build:ts",
+    "build:js": "tsc && vite build",
+    "build:ts": "tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
+    "lint": "yarn lint:js && yarn lint:ts",
+    "lint:js": "eslint src --max-warnings 0",
+    "lint:ts": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "release": "release-it",
+    "clean": "rm -rf dist",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "styled-components",
+    "styled",
+    "system",
+    "jsx",
+    "props"
+  ],
+  "dependencies": {},
+  "peerDependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "csstype": "^3.1.0",
+    "eslint": "^8.18.0",
+    "husky": "^8.0.1",
+    "release-it": "^15.1.1",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13",
+    "vitest": "^0.16.0"
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+examples
+src
+test
+.husky
+.eslintignore
+.eslintrc.js
+jest.config.js
+prettier.config.js
+rollup.config.js
+tsconfig.json
+*.log
+*.tgz

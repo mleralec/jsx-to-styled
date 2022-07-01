@@ -33,7 +33,7 @@
     "lint:ts": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "release": "release-it",
+    "release": "yarn build && release-it",
     "clean": "rm -rf dist",
     "prepare": "husky install"
   },

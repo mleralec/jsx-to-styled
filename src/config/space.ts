@@ -1,26 +1,27 @@
 import type * as CSS from 'csstype'
+import type { CSSObject } from 'styled-components'
 
 import type { Theme } from '../theme'
 import { get } from '../utils'
 
 export type SpaceProps = Partial<{
-  m: keyof Theme['spaces'] | CSS.Property.Margin
-  mt: keyof Theme['spaces'] | CSS.Property.MarginTop
-  mr: keyof Theme['spaces'] | CSS.Property.MarginRight
-  mb: keyof Theme['spaces'] | CSS.Property.MarginBottom
-  ml: keyof Theme['spaces'] | CSS.Property.MarginLeft
-  my: keyof Theme['spaces'] | CSS.Property.Margin
-  mx: keyof Theme['spaces'] | CSS.Property.Margin
-  p: keyof Theme['spaces'] | CSS.Property.Padding
-  pt: keyof Theme['spaces'] | CSS.Property.PaddingTop
-  pr: keyof Theme['spaces'] | CSS.Property.PaddingRight
-  pb: keyof Theme['spaces'] | CSS.Property.PaddingBottom
-  pl: keyof Theme['spaces'] | CSS.Property.PaddingLeft
-  py: keyof Theme['spaces'] | CSS.Property.Padding
-  px: keyof Theme['spaces'] | CSS.Property.Padding
+  m: keyof Theme['spaces'] | Exclude<CSS.Property.Margin, number>
+  mt: keyof Theme['spaces'] | Exclude<CSS.Property.MarginTop, number>
+  mr: keyof Theme['spaces'] | Exclude<CSS.Property.MarginRight, number>
+  mb: keyof Theme['spaces'] | Exclude<CSS.Property.MarginBottom, number>
+  ml: keyof Theme['spaces'] | Exclude<CSS.Property.MarginLeft, number>
+  my: keyof Theme['spaces'] | Exclude<CSS.Property.Margin, number>
+  mx: keyof Theme['spaces'] | Exclude<CSS.Property.Margin, number>
+  p: keyof Theme['spaces'] | Exclude<CSS.Property.Padding, number>
+  pt: keyof Theme['spaces'] | Exclude<CSS.Property.PaddingTop, number>
+  pr: keyof Theme['spaces'] | Exclude<CSS.Property.PaddingRight, number>
+  pb: keyof Theme['spaces'] | Exclude<CSS.Property.PaddingBottom, number>
+  pl: keyof Theme['spaces'] | Exclude<CSS.Property.PaddingLeft, number>
+  py: keyof Theme['spaces'] | Exclude<CSS.Property.Padding, number>
+  px: keyof Theme['spaces'] | Exclude<CSS.Property.Padding, number>
 }>
 
-export const space = (props: SpaceProps & { theme?: Theme }) => {
+export const space = (props: SpaceProps & { theme?: Theme }): CSSObject => {
   return {
     margin: get(props.m, props.theme, 'spaces'),
     marginTop: get(props.mt || props.my, props.theme, 'spaces'),

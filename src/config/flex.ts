@@ -1,4 +1,5 @@
 import type * as CSS from 'csstype'
+import type { CSSObject } from 'styled-components'
 
 export type FlexProps = Partial<{
   alignItems: CSS.Property.AlignItems
@@ -16,7 +17,7 @@ export type FlexProps = Partial<{
   order: CSS.Property.Order
 }>
 
-export const flex = (props: FlexProps) => {
+export const flex = (props: FlexProps): CSSObject => {
   return {
     alignItems: props.alignItems,
     alignContent: props.alignContent,

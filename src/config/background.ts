@@ -1,4 +1,5 @@
 import type * as CSS from 'csstype'
+import type { CSSObject } from 'styled-components'
 
 export type BackgroundProps = Partial<{
   background: CSS.Property.Background
@@ -8,7 +9,7 @@ export type BackgroundProps = Partial<{
   backgroundRepeat: CSS.Property.BackgroundRepeat
 }>
 
-export const background = (props: BackgroundProps) => {
+export const background = (props: BackgroundProps): CSSObject => {
   return {
     background: props.background,
     backgroundImage: props.backgroundImage,

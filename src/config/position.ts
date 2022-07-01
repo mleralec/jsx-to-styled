@@ -1,4 +1,5 @@
 import type * as CSS from 'csstype'
+import type { CSSObject } from 'styled-components'
 
 import type { Theme } from '../theme'
 import { get } from '../utils'
@@ -6,13 +7,13 @@ import { get } from '../utils'
 export type PositionProps = Partial<{
   position: CSS.Property.Position
   zIndex: CSS.Property.ZIndex
-  top: keyof Theme['spaces'] | CSS.Property.Top
-  right: keyof Theme['spaces'] | CSS.Property.Right
-  bottom: keyof Theme['spaces'] | CSS.Property.Bottom
-  left: keyof Theme['spaces'] | CSS.Property.Left
+  top: keyof Theme['spaces'] | Exclude<CSS.Property.Top, number>
+  right: keyof Theme['spaces'] | Exclude<CSS.Property.Right, number>
+  bottom: keyof Theme['spaces'] | Exclude<CSS.Property.Bottom, number>
+  left: keyof Theme['spaces'] | Exclude<CSS.Property.Left, number>
 }>
 
-export const position = (props: PositionProps & { theme?: Theme }) => {
+export const position = (props: PositionProps & { theme?: Theme }): CSSObject => {
   return {
     position: props.position,
     zIndex: props.zIndex,

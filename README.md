@@ -26,7 +26,7 @@ yarn add jsx-to-styled
 
 ## 💻 Usage
 
-You can use **jsx-to-styled** without theme
+You can use **jsx-to-styled** without theme ([codesandbox example](https://codesandbox.io/s/simple-554sjy))
 
 ```tsx
 import styled from 'styled-components'
@@ -43,17 +43,17 @@ return (
 )
 ```
 
-Or use with a theme to use custom values
+Or use with a theme to use custom values ([codesandbox example](https://codesandbox.io/s/theme-3xxgmk))
 
 ```tsx
 import styled, { ThemeProvider } from 'styled-components'
-import system from 'jsx-to-styled'
+import system, { System, Theme } from 'jsx-to-styled'
 
 // create your styled component with system props
-const Box = styled.div(system)
+const Box = styled.div<System>(system)
 
 // create your theme
-const theme = {
+const theme: Theme = {
   colors: {
     primary: 'white',
     secondary: 'tomato',
@@ -78,7 +78,7 @@ return (
 
 ## ✨ Typescript
 
-Thanks to [csstype](https://github.com/frenic/csstype), this library is fully typed. You will have autocomplete for all styled props, with your theme values if provided and possible css values.
+Thanks to [csstype](https://github.com/frenic/csstype), **jsx-to-styled** is fully typed. You will have autocomplete for all styled props with your theme values if provided or/and possible css values.
 
 ```tsx
 import system, { System } from 'jsx-to-styled'

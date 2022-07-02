@@ -13,6 +13,7 @@ export type TypographyProps = Props<{
   letterSpacing: keyof Theme['letterSpacings'] | CSS.Property.LetterSpacing
   textAlign: CSS.Property.TextAlign
   fontStyle: CSS.Property.FontStyle
+  textDecoration: CSS.Property.TextDecoration
 }>
 
 export const typography = (props: TypographyProps & ThemeProp): CSSObject => {
@@ -23,5 +24,6 @@ export const typography = (props: TypographyProps & ThemeProp): CSSObject => {
     letterSpacing: get(props.letterSpacing, props.theme, 'letterSpacings'),
     textAlign: props.textAlign,
     fontStyle: props.fontStyle,
+    textDecoration: props.textDecoration,
   }
 }

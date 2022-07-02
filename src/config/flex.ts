@@ -8,12 +8,12 @@ export type FlexProps = Props<{
   alignContent: CSS.Property.AlignContent
   justifyItems: CSS.Property.JustifyItems
   justifyContent: CSS.Property.JustifyContent
-  flexWrap: CSS.Property.FlexWrap
-  flexDirection: CSS.Property.FlexDirection
   flex: CSS.Property.Flex
+  flexBasis: CSS.Property.FlexBasis
+  flexDirection: CSS.Property.FlexDirection
   flexGrow: CSS.Property.FlexGrow
   flexShrink: CSS.Property.FlexShrink
-  flexBasis: CSS.Property.FlexBasis
+  flexWrap: CSS.Property.FlexWrap
   justifySelf: CSS.Property.JustifySelf
   alignSelf: CSS.Property.AlignSelf
   order: CSS.Property.Order

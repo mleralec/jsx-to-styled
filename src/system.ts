@@ -22,7 +22,7 @@ import type {
   SpaceProps,
   TypographyProps,
 } from './config'
-import type { Theme } from './theme'
+import type { ThemeProp } from './types'
 
 export type SystemProps = BackgroundProps &
   BorderProps &
@@ -34,7 +34,7 @@ export type SystemProps = BackgroundProps &
   SpaceProps &
   TypographyProps
 
-export const system = (props: SystemProps & { theme?: Theme }): CSSObject => ({
+export const system = (props: SystemProps & ThemeProp): CSSObject => ({
   ...background(props),
   ...border(props),
   ...color(props),

@@ -232,3 +232,14 @@ const Box = styled.div<System>(system)
 | textAlign      | text-align      |                |
 | fontStyle      | font-style      |                |
 | textDecoration | text-decoration |                |
+
+### Other
+
+| JSX Property   | CSS property    | Theme key |
+| -------------- | --------------- | --------- |
+| cusor          | cursor          |           |
+| float          | float           |           |
+| objectFit      | object-fit      |           |
+| objectPosition | object-position |           |
+| transform      | transform       |           |
+| visibility     | visibility      |           |

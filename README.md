@@ -47,13 +47,13 @@ Or use with a theme to use custom values ([codesandbox example](https://codesand
 
 ```tsx
 import styled, { ThemeProvider } from 'styled-components'
-import system, { System, Theme } from 'jsx-to-styled'
+import system, { System } from 'jsx-to-styled'
 
 // create your styled component with system props
 const Box = styled.div<System>(system)
 
 // create your theme
-const theme: Theme = {
+const theme = {
   colors: {
     primary: 'white',
     secondary: 'tomato',

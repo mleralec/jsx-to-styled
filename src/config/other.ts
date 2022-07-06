@@ -12,7 +12,7 @@ export type OtherProps = Props<{
   visibility: CSS.Property.Visibility
 }>
 
-export const layout = (props: OtherProps & ThemeProp): CSSObject => {
+export const other = (props: OtherProps & ThemeProp): CSSObject => {
   return {
     cursor: props.cursor,
     float: props.float,

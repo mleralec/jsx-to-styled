@@ -7,6 +7,7 @@ import {
   flex,
   grid,
   layout,
+  other,
   position,
   space,
   typography,
@@ -18,6 +19,7 @@ import type {
   FlexProps,
   GridProps,
   LayoutProps,
+  OtherProps,
   PositionProps,
   SpaceProps,
   TypographyProps,
@@ -32,7 +34,8 @@ export type SystemProps = BackgroundProps &
   LayoutProps &
   PositionProps &
   SpaceProps &
-  TypographyProps
+  TypographyProps &
+  OtherProps
 
 export const system = (props: SystemProps & ThemeProp): CSSObject => ({
   ...background(props),
@@ -41,6 +44,7 @@ export const system = (props: SystemProps & ThemeProp): CSSObject => ({
   ...flex(props),
   ...grid(props),
   ...layout(props),
+  ...other(props),
   ...position(props),
   ...space(props),
   ...typography(props),

@@ -10,7 +10,7 @@ const theme: Theme = {
 }
 
 describe('get', () => {
-  it('should get value', () => {
+  it('should get theme value', () => {
     expect(get('primary.500', theme, 'colors')).toBe(theme.colors?.['primary.500'])
   })
 

@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Config, Props, ThemeProp, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type PositionProps = Props<{
   position: CSS.Property.Position
@@ -13,13 +12,15 @@ export type PositionProps = Props<{
   left: ThemeValues<'spaces'> | CSS.Property.Left
 }>
 
-export const position = (props: PositionProps & ThemeProp): CSSObject => {
-  return {
-    position: props.position,
-    zIndex: props.zIndex,
-    top: get(props.top, props.theme, 'spaces'),
-    right: get(props.right, props.theme, 'spaces'),
-    bottom: get(props.bottom, props.theme, 'spaces'),
-    left: get(props.left, props.theme, 'spaces'),
-  }
+const config: Config[] = [
+  { property: 'position' },
+  { property: 'zIndex' },
+  { property: 'top', scope: 'spaces' },
+  { property: 'right', scope: 'spaces' },
+  { property: 'bottom', scope: 'spaces' },
+  { property: 'left', scope: 'spaces' },
+]
+
+export const position = (props: PositionProps & ThemeProp) => {
+  return getStyles(config, props)
 }

@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Config, Props, ThemeProp, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type ColorProps = Props<{
   color: ThemeValues<'colors'> | CSS.Property.Color
@@ -10,10 +9,12 @@ export type ColorProps = Props<{
   opacity: CSS.Property.Opacity
 }>
 
-export const color = (props: ColorProps & ThemeProp): CSSObject => {
-  return {
-    color: get(props.color, props.theme, 'colors'),
-    backgroundColor: get(props.backgroundColor, props.theme, 'colors'),
-    opacity: props.opacity,
-  }
+const config: Config[] = [
+  { property: 'color', scope: 'colors' },
+  { property: 'backgroundColor', scope: 'colors' },
+  { property: 'opacity' },
+]
+
+export const color = (props: ColorProps & ThemeProp) => {
+  return getStyles(config, props)
 }

@@ -1,24 +1,42 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 
-import type { Theme } from '../../src/theme'
-import { get } from '../../src/utils'
+import { getStyles } from '../../src/utils'
+import type { Config } from '../../src/types'
 
-const theme: Theme = {
+const theme = {
   colors: {
-    'primary.500': 'tomato',
+    primary: 'tomato',
   },
 }
 
-describe('get', () => {
+const defaultProps = { color: 'primary', theme }
+const defaultConfig: Config[] = [{ property: 'color', scope: 'colors' }]
+
+let props = {}
+let config: Config[] = []
+
+beforeEach(() => {
+  props = { ...defaultProps }
+  config = [...defaultConfig]
+})
+
+describe('getStyles', () => {
   it('should get theme value', () => {
-    expect(get('primary.500', theme, 'colors')).toBe(theme.colors?.['primary.500'])
+    expect(getStyles(config, props)).toEqual({ color: 'tomato' })
   })
 
   it('should fallback with unknown value', () => {
-    expect(get('secondary.500', theme, 'colors')).toBe('secondary.500')
+    props = { ...props, color: 'secondary' }
+    expect(getStyles(config, props)).toEqual({ color: 'secondary' })
   })
 
   it('should fallback with bad scope', () => {
-    expect(get('secondary.500', theme, 'spaces')).toBe('secondary.500')
+    config = [{ property: 'color', scope: 'spaces' }]
+    expect(getStyles(config, props)).toEqual({ color: 'primary' })
+  })
+
+  it('should fallback without scope', () => {
+    config = [{ property: 'color' }]
+    expect(getStyles(config, props)).toEqual({ color: 'primary' })
   })
 })

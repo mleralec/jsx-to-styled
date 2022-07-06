@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
+import type { Config, Props, ThemeProp } from '../types'
+import { getStyles } from '../utils'
 
 export type FlexProps = Props<{
   alignItems: CSS.Property.AlignItems
@@ -19,20 +19,22 @@ export type FlexProps = Props<{
   order: CSS.Property.Order
 }>
 
-export const flex = (props: FlexProps & ThemeProp): CSSObject => {
-  return {
-    alignItems: props.alignItems,
-    alignContent: props.alignContent,
-    justifyItems: props.justifyItems,
-    justifyContent: props.justifyContent,
-    flexWrap: props.flexWrap,
-    flexDirection: props.flexDirection,
-    flex: props.flex,
-    flexGrow: props.flexGrow,
-    flexShrink: props.flexShrink,
-    flexBasis: props.flexBasis,
-    justifySelf: props.justifySelf,
-    alignSelf: props.alignSelf,
-    order: props.order,
-  }
+const config: Config[] = [
+  { property: 'alignItems' },
+  { property: 'alignContent' },
+  { property: 'justifyItems' },
+  { property: 'justifyContent' },
+  { property: 'flex' },
+  { property: 'flexBasis' },
+  { property: 'flexDirection' },
+  { property: 'flexGrow' },
+  { property: 'flexShrink' },
+  { property: 'flexWrap' },
+  { property: 'justifySelf' },
+  { property: 'alignSelf' },
+  { property: 'order' },
+]
+
+export const flex = (props: FlexProps & ThemeProp) => {
+  return getStyles(config, props)
 }

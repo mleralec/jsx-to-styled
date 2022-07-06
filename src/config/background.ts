@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
+import type { Props, Config, ThemeProp } from '../types'
+import { getStyles } from '../utils'
 
 export type BackgroundProps = Props<{
   background: CSS.Property.Background
@@ -11,12 +11,14 @@ export type BackgroundProps = Props<{
   backgroundRepeat: CSS.Property.BackgroundRepeat
 }>
 
-export const background = (props: BackgroundProps & ThemeProp): CSSObject => {
-  return {
-    background: props.background,
-    backgroundImage: props.backgroundImage,
-    backgroundSize: props.backgroundSize,
-    backgroundPosition: props.backgroundPosition,
-    backgroundRepeat: props.backgroundRepeat,
-  }
+const config: Config[] = [
+  { property: 'background' },
+  { property: 'backgroundImage' },
+  { property: 'backgroundSize' },
+  { property: 'backgroundPosition' },
+  { property: 'backgroundRepeat' },
+]
+
+export const background = (props: BackgroundProps & ThemeProp) => {
+  return getStyles(config, props)
 }

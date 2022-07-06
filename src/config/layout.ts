@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Config, Props, ThemeProp, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type LayoutProps = Props<{
   w: ThemeValues<'sizes'> | CSS.Property.Width
@@ -18,18 +17,20 @@ export type LayoutProps = Props<{
   overflowY: CSS.Property.OverflowY
 }>
 
-export const layout = (props: LayoutProps & ThemeProp): CSSObject => {
-  return {
-    width: get(props.w, props.theme, 'sizes'),
-    height: get(props.h, props.theme, 'sizes'),
-    minWidht: get(props.minW, props.theme, 'sizes'),
-    maxWidth: get(props.maxW, props.theme, 'sizes'),
-    minHeight: get(props.minH, props.theme, 'sizes'),
-    maxHeight: get(props.maxH, props.theme, 'sizes'),
-    display: props.display,
-    verticalAlign: props.verticalAlign,
-    overflow: props.overflow,
-    overflowX: props.overflowX,
-    overflowY: props.overflowY,
-  }
+const config: Config[] = [
+  { property: 'w', scope: 'sizes' },
+  { property: 'h', scope: 'sizes' },
+  { property: 'minW', scope: 'sizes' },
+  { property: 'maxW', scope: 'sizes' },
+  { property: 'minH', scope: 'sizes' },
+  { property: 'maxH', scope: 'sizes' },
+  { property: 'display' },
+  { property: 'verticalAlign' },
+  { property: 'overflow' },
+  { property: 'overflowX' },
+  { property: 'overflowY' },
+]
+
+export const layout = (props: LayoutProps & ThemeProp) => {
+  return getStyles(config, props)
 }

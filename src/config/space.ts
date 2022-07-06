@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Config, Props, ThemeProp, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type SpaceProps = Props<{
   m: ThemeValues<'spaces'> | CSS.Property.Margin
@@ -21,17 +20,23 @@ export type SpaceProps = Props<{
   px: ThemeValues<'spaces'> | CSS.Property.Padding
 }>
 
-export const space = (props: SpaceProps & ThemeProp): CSSObject => {
-  return {
-    margin: get(props.m, props.theme, 'spaces'),
-    marginTop: get(props.mt || props.my, props.theme, 'spaces'),
-    marginRight: get(props.mr || props.mx, props.theme, 'spaces'),
-    marginBottom: get(props.mb || props.mb, props.theme, 'spaces'),
-    marginLeft: get(props.ml || props.mx, props.theme, 'spaces'),
-    padding: get(props.p, props.theme, 'spaces'),
-    paddingTop: get(props.pt || props.py, props.theme, 'spaces'),
-    paddingRight: get(props.pr || props.px, props.theme, 'spaces'),
-    paddingBottom: get(props.pb || props.pb, props.theme, 'spaces'),
-    paddingLeft: get(props.pl || props.px, props.theme, 'spaces'),
-  }
+const config: Config[] = [
+  { property: 'm', scope: 'spaces' },
+  { property: 'mt', scope: 'spaces' },
+  { property: 'mr', scope: 'spaces' },
+  { property: 'mb', scope: 'spaces' },
+  { property: 'ml', scope: 'spaces' },
+  { property: 'my', scope: 'spaces' },
+  { property: 'mx', scope: 'spaces' },
+  { property: 'p', scope: 'spaces' },
+  { property: 'pt', scope: 'spaces' },
+  { property: 'pr', scope: 'spaces' },
+  { property: 'pb', scope: 'spaces' },
+  { property: 'pl', scope: 'spaces' },
+  { property: 'py', scope: 'spaces' },
+  { property: 'px', scope: 'spaces' },
+]
+
+export const space = (props: SpaceProps & ThemeProp) => {
+  return getStyles(config, props)
 }

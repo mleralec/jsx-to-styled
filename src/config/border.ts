@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Props, ThemeProp, Config, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type BorderProps = Props<{
   border: CSS.Property.Border
@@ -32,32 +31,34 @@ export type BorderProps = Props<{
   borderLeftColor: ThemeValues<'colors'> | CSS.Property.BorderLeftColor
 }>
 
-export const border = (props: BorderProps & ThemeProp): CSSObject => {
-  return {
-    border: props.border,
-    borderWidth: get(props.borderWidth, props.theme, 'borderWidths'),
-    borderStyle: props.borderStyle,
-    borderColor: get(props.borderColor, props.theme, 'colors'),
-    borderRadius: get(props.borderRadius, props.theme, 'radii'),
-    borderTop: props.borderTop,
-    borderTopWidth: get(props.borderTopWidth, props.theme, 'borderWidths'),
-    borderTopStyle: props.borderTopStyle,
-    borderTopColor: get(props.borderTopColor, props.theme, 'colors'),
-    borderTopLeftRadius: get(props.borderTopLeftRadius, props.theme, 'radii'),
-    borderTopRightRadius: get(props.borderTopRightRadius, props.theme, 'radii'),
-    borderRight: props.borderRight,
-    borderRightWidth: get(props.borderRightWidth, props.theme, 'borderWidths'),
-    borderRightStyle: props.borderRightStyle,
-    borderRightColor: get(props.borderRightColor, props.theme, 'colors'),
-    borderBottom: props.borderBottom,
-    borderBottomWidth: get(props.borderBottomWidth, props.theme, 'borderWidths'),
-    borderBottomStyle: props.borderBottomStyle,
-    borderBottomColor: get(props.borderBottomColor, props.theme, 'colors'),
-    borderBottomLeftRadius: get(props.borderBottomLeftRadius, props.theme, 'radii'),
-    borderBottomRightRadius: get(props.borderBottomRightRadius, props.theme, 'radii'),
-    borderLeft: props.borderLeft,
-    borderLeftWidth: get(props.borderLeftWidth, props.theme, 'borderWidths'),
-    borderLeftStyle: props.borderLeftStyle,
-    borderLeftColor: get(props.borderLeftColor, props.theme, 'colors'),
-  }
+const config: Config[] = [
+  { property: 'border' },
+  { property: 'borderWidth', scope: 'borderWidths' },
+  { property: 'borderStyle' },
+  { property: 'borderColor', scope: 'colors' },
+  { property: 'borderRadius', scope: 'radii' },
+  { property: 'borderTop' },
+  { property: 'borderTopWidth', scope: 'borderWidths' },
+  { property: 'borderTopStyle' },
+  { property: 'borderTopColor', scope: 'colors' },
+  { property: 'borderTopLeftRadius', scope: 'radii' },
+  { property: 'borderTopRightRadius', scope: 'radii' },
+  { property: 'borderRight' },
+  { property: 'borderRightWidth', scope: 'borderWidths' },
+  { property: 'borderRightStyle' },
+  { property: 'borderRightColor', scope: 'colors' },
+  { property: 'borderBottom' },
+  { property: 'borderBottomWidth', scope: 'borderWidths' },
+  { property: 'borderBottomStyle' },
+  { property: 'borderBottomColor', scope: 'colors' },
+  { property: 'borderBottomLeftRadius', scope: 'radii' },
+  { property: 'borderBottomRightRadius', scope: 'radii' },
+  { property: 'borderLeft' },
+  { property: 'borderLeftWidth', scope: 'borderWidths' },
+  { property: 'borderLeftStyle' },
+  { property: 'borderLeftColor', scope: 'colors' },
+]
+
+export const border = (props: BorderProps & ThemeProp) => {
+  return getStyles(config, props)
 }

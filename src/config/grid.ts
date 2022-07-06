@@ -1,8 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp, ThemeValues } from '../types'
-import { get } from '../utils'
+import type { Config, Props, ThemeProp, ThemeValues } from '../types'
+import { getStyles } from '../utils'
 
 export type GridProps = Props<{
   gridGap: ThemeValues<'spaces'> | CSS.Property.GridGap
@@ -19,19 +18,21 @@ export type GridProps = Props<{
   gridTemplateAreas: CSS.Property.Grid
 }>
 
-export const grid = (props: GridProps & ThemeProp): CSSObject => {
-  return {
-    gridGap: get(props.gridGap, props.theme, 'spaces'),
-    gridRowGap: get(props.gridRowGap, props.theme, 'spaces'),
-    gridColumnGap: get(props.gridColumnGap, props.theme, 'spaces'),
-    gridColumn: props.gridColumn,
-    gridRow: props.gridRow,
-    gridArea: props.gridArea,
-    gridAutoFlow: props.gridAutoFlow,
-    gridAutoRows: props.gridAutoRows,
-    gridAutoColumns: props.gridAutoColumns,
-    gridTemplateRows: props.gridTemplateRows,
-    gridTemplateColumns: props.gridTemplateColumns,
-    gridTemplateAreas: props.gridTemplateAreas,
-  }
+const config: Config[] = [
+  { property: 'gridGap', scope: 'spaces' },
+  { property: 'gridRowGap', scope: 'spaces' },
+  { property: 'gridColumnGap', scope: 'spaces' },
+  { property: 'gridColumn' },
+  { property: 'gridRow' },
+  { property: 'gridArea' },
+  { property: 'gridAutoFlow' },
+  { property: 'gridAutoRows' },
+  { property: 'gridAutoColumns' },
+  { property: 'gridTemplateRows' },
+  { property: 'gridTemplateColumns' },
+  { property: 'gridTemplateAreas' },
+]
+
+export const grid = (props: GridProps & ThemeProp) => {
+  return getStyles(config, props)
 }

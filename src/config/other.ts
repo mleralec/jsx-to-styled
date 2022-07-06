@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
-import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
+import type { Config, Props, ThemeProp } from '../types'
+import { getStyles } from '../utils'
 
 export type OtherProps = Props<{
   cursor: CSS.Property.Cursor
@@ -12,13 +12,15 @@ export type OtherProps = Props<{
   visibility: CSS.Property.Visibility
 }>
 
-export const other = (props: OtherProps & ThemeProp): CSSObject => {
-  return {
-    cursor: props.cursor,
-    float: props.float,
-    objectFit: props.objectFit,
-    objectPosition: props.objectPosition,
-    transform: props.transform,
-    visibility: props.visibility,
-  }
+const config: Config[] = [
+  { property: 'cursor' },
+  { property: 'float' },
+  { property: 'objectFit' },
+  { property: 'objectPosition' },
+  { property: 'transform' },
+  { property: 'visibility' },
+]
+
+export const other = (props: OtherProps & ThemeProp) => {
+  return getStyles(config, props)
 }

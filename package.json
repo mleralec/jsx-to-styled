@@ -1,7 +1,7 @@
 {
   "name": "jsx-to-styled",
   "description": "jsx-to-styled adds styled props to your React components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "mleralec",
   "license": "MIT",
   "repository": {

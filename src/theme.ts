@@ -10,4 +10,5 @@ export type ThemeKeys =
   | 'borderWidths'
   | 'radii'
 
-export type Theme = Partial<Record<ThemeKeys, Record<string, string>>>
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Theme extends Partial<Record<ThemeKeys, Record<string, string>>> {}

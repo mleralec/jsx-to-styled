@@ -1,25 +1,24 @@
 import type * as CSS from 'csstype'
 import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
-import type { Theme } from '../theme'
+import type { Props, ThemeProp, ThemeValues } from '../types'
 import { get } from '../utils'
 
 export type SpaceProps = Props<{
-  m: keyof Theme['spaces'] | CSS.Property.Margin
-  mt: keyof Theme['spaces'] | CSS.Property.MarginTop
-  mr: keyof Theme['spaces'] | CSS.Property.MarginRight
-  mb: keyof Theme['spaces'] | CSS.Property.MarginBottom
-  ml: keyof Theme['spaces'] | CSS.Property.MarginLeft
-  my: keyof Theme['spaces'] | CSS.Property.Margin
-  mx: keyof Theme['spaces'] | CSS.Property.Margin
-  p: keyof Theme['spaces'] | CSS.Property.Padding
-  pt: keyof Theme['spaces'] | CSS.Property.PaddingTop
-  pr: keyof Theme['spaces'] | CSS.Property.PaddingRight
-  pb: keyof Theme['spaces'] | CSS.Property.PaddingBottom
-  pl: keyof Theme['spaces'] | CSS.Property.PaddingLeft
-  py: keyof Theme['spaces'] | CSS.Property.Padding
-  px: keyof Theme['spaces'] | CSS.Property.Padding
+  m: ThemeValues<'spaces'> | CSS.Property.Margin
+  mt: ThemeValues<'spaces'> | CSS.Property.MarginTop
+  mr: ThemeValues<'spaces'> | CSS.Property.MarginRight
+  mb: ThemeValues<'spaces'> | CSS.Property.MarginBottom
+  ml: ThemeValues<'spaces'> | CSS.Property.MarginLeft
+  my: ThemeValues<'spaces'> | CSS.Property.Margin
+  mx: ThemeValues<'spaces'> | CSS.Property.Margin
+  p: ThemeValues<'spaces'> | CSS.Property.Padding
+  pt: ThemeValues<'spaces'> | CSS.Property.PaddingTop
+  pr: ThemeValues<'spaces'> | CSS.Property.PaddingRight
+  pb: ThemeValues<'spaces'> | CSS.Property.PaddingBottom
+  pl: ThemeValues<'spaces'> | CSS.Property.PaddingLeft
+  py: ThemeValues<'spaces'> | CSS.Property.Padding
+  px: ThemeValues<'spaces'> | CSS.Property.Padding
 }>
 
 export const space = (props: SpaceProps & ThemeProp): CSSObject => {

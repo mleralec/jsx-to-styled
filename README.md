@@ -78,13 +78,27 @@ return (
 
 ## ✨ Typescript
 
-Thanks to [csstype](https://github.com/frenic/csstype), **jsx-to-styled** is fully typed. You will have autocomplete for all styled props with your theme values if provided or/and possible css values.
+Thanks to [csstype](https://github.com/frenic/csstype), **jsx-to-styled** is fully typed. You will have autocomplete for all possible css values.
 
 ```tsx
 import system, { System } from 'jsx-to-styled'
 
 // don't forget to add System type to your styled-component definition
 const Box = styled.div<System>(system)
+```
+
+If you want to access to your theme values, you have to redefine "Theme" interface with your custom theme like that:
+
+```ts
+// theme.d.ts
+import 'jsx-to-styled'
+import { theme } from './theme'
+
+type MyTheme = typeof theme
+
+declare module 'jsx-to-styled' {
+  export interface Theme extends MyTheme {}
+}
 ```
 
 ## 📕 Props

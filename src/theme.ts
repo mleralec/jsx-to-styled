@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type ThemeKeys =
   | 'colors'
   | 'spaces'
@@ -9,6 +11,18 @@ export type ThemeKeys =
   | 'letterSpacings'
   | 'borderWidths'
   | 'radii'
+  | (string & Record<never, never>)
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Theme extends Partial<Record<ThemeKeys, Record<string, string>>> {}
+/**
+ * import 'jsx-to-styled'
+ * import { theme } from './index'
+ *
+ * type MyTheme = typeof theme
+ *
+ * declare module 'jsx-to-styled' {
+ *   export interface Theme extends MyTheme {}
+ * }
+ */
+export interface Theme {
+  [key: string]: any
+}

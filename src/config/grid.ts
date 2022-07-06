@@ -1,14 +1,13 @@
 import type * as CSS from 'csstype'
 import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
-import type { Theme } from '../theme'
+import type { Props, ThemeProp, ThemeValues } from '../types'
 import { get } from '../utils'
 
 export type GridProps = Props<{
-  gridGap: keyof Theme['spaces'] | CSS.Property.GridGap
-  gridRowGap: keyof Theme['spaces'] | CSS.Property.GridRowGap
-  gridColumnGap: keyof Theme['spaces'] | CSS.Property.GridColumnGap
+  gridGap: ThemeValues<'spaces'> | CSS.Property.GridGap
+  gridRowGap: ThemeValues<'spaces'> | CSS.Property.GridRowGap
+  gridColumnGap: ThemeValues<'spaces'> | CSS.Property.GridColumnGap
   gridColumn: CSS.Property.GridColumn
   gridRow: CSS.Property.GridRow
   gridArea: CSS.Property.GridArea

@@ -1,17 +1,16 @@
 import type * as CSS from 'csstype'
 import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
-import type { Theme } from '../theme'
+import type { Props, ThemeProp, ThemeValues } from '../types'
 import { get } from '../utils'
 
 export type PositionProps = Props<{
   position: CSS.Property.Position
   zIndex: CSS.Property.ZIndex
-  top: keyof Theme['spaces'] | CSS.Property.Top
-  right: keyof Theme['spaces'] | CSS.Property.Right
-  bottom: keyof Theme['spaces'] | CSS.Property.Bottom
-  left: keyof Theme['spaces'] | CSS.Property.Left
+  top: ThemeValues<'spaces'> | CSS.Property.Top
+  right: ThemeValues<'spaces'> | CSS.Property.Right
+  bottom: ThemeValues<'spaces'> | CSS.Property.Bottom
+  left: ThemeValues<'spaces'> | CSS.Property.Left
 }>
 
 export const position = (props: PositionProps & ThemeProp): CSSObject => {

@@ -1,17 +1,16 @@
 import type * as CSS from 'csstype'
 import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
-import type { Theme } from '../theme'
+import type { Props, ThemeProp, ThemeValues } from '../types'
 import { get } from '../utils'
 
 export type LayoutProps = Props<{
-  w: keyof Theme['sizes'] | CSS.Property.Width
-  h: keyof Theme['sizes'] | CSS.Property.Height
-  minW: keyof Theme['sizes'] | CSS.Property.MinWidth
-  maxW: keyof Theme['sizes'] | CSS.Property.MaxWidth
-  minH: keyof Theme['sizes'] | CSS.Property.MinHeight
-  maxH: keyof Theme['sizes'] | CSS.Property.MaxHeight
+  w: ThemeValues<'sizes'> | CSS.Property.Width
+  h: ThemeValues<'sizes'> | CSS.Property.Height
+  minW: ThemeValues<'sizes'> | CSS.Property.MinWidth
+  maxW: ThemeValues<'sizes'> | CSS.Property.MaxWidth
+  minH: ThemeValues<'sizes'> | CSS.Property.MinHeight
+  maxH: ThemeValues<'sizes'> | CSS.Property.MaxHeight
   display: CSS.Property.Display
   verticalAlign: CSS.Property.VerticalAlign
   overflow: CSS.Property.Overflow

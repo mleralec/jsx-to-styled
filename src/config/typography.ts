@@ -1,16 +1,15 @@
 import type * as CSS from 'csstype'
 import type { CSSObject } from 'styled-components'
 
-import type { Props, ThemeProp } from '../types'
-import type { Theme } from '../theme'
+import type { Props, ThemeProp, ThemeValues } from '../types'
 import { get } from '../utils'
 
 export type TypographyProps = Props<{
-  fontFamily: keyof Theme['fonts'] | CSS.Property.FontFamily
-  fontSize: keyof Theme['fontSizes'] | CSS.Property.FontSize
-  fontWeight: keyof Theme['fontWeights'] | CSS.Property.FontWeight
-  lineHeight: keyof Theme['lineHeights'] | CSS.Property.LineHeight
-  letterSpacing: keyof Theme['letterSpacings'] | CSS.Property.LetterSpacing
+  fontFamily: ThemeValues<'fonts'> | CSS.Property.FontFamily
+  fontSize: ThemeValues<'fontSizes'> | CSS.Property.FontSize
+  fontWeight: ThemeValues<'fontWeights'> | CSS.Property.FontWeight
+  lineHeight: ThemeValues<'lineHeights'> | CSS.Property.LineHeight
+  letterSpacing: ThemeValues<'letterSpacings'> | CSS.Property.LetterSpacing
   textAlign: CSS.Property.TextAlign
   fontStyle: CSS.Property.FontStyle
   textDecoration: CSS.Property.TextDecoration

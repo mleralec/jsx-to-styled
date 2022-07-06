@@ -1,5 +1,5 @@
-import type { Theme, ThemeKeys } from '../theme'
+import type { Theme } from '../theme'
 
-export const get = (key: string, theme: Theme, scope: ThemeKeys): string => {
-  return theme?.[scope]?.[key as string] || key
+export const get = <T extends Theme>(key: string, theme: T, scope: keyof T): string => {
+  return theme?.[scope]?.[key] || key
 }

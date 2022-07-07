@@ -11,6 +11,7 @@ export type ThemeKeys =
   | 'letterSpacings'
   | 'borderWidths'
   | 'radii'
+  | 'states'
   | (string & Record<never, never>)
 
 /**

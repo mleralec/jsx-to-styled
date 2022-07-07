@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props } from '../types'
+import { compose } from '../utils'
 
 export type FlexProps = Props<{
   alignItems: CSS.Property.AlignItems
@@ -19,22 +19,20 @@ export type FlexProps = Props<{
   order: CSS.Property.Order
 }>
 
-const config: Config[] = [
-  { property: 'alignItems' },
-  { property: 'alignContent' },
-  { property: 'justifyItems' },
-  { property: 'justifyContent' },
-  { property: 'flex' },
-  { property: 'flexBasis' },
-  { property: 'flexDirection' },
-  { property: 'flexGrow' },
-  { property: 'flexShrink' },
-  { property: 'flexWrap' },
-  { property: 'justifySelf' },
-  { property: 'alignSelf' },
-  { property: 'order' },
+export const flexConfig: Config[] = [
+  { jsxProperty: 'alignItems' },
+  { jsxProperty: 'alignContent' },
+  { jsxProperty: 'justifyItems' },
+  { jsxProperty: 'justifyContent' },
+  { jsxProperty: 'flex' },
+  { jsxProperty: 'flexBasis' },
+  { jsxProperty: 'flexDirection' },
+  { jsxProperty: 'flexGrow' },
+  { jsxProperty: 'flexShrink' },
+  { jsxProperty: 'flexWrap' },
+  { jsxProperty: 'justifySelf' },
+  { jsxProperty: 'alignSelf' },
+  { jsxProperty: 'order' },
 ]
 
-export const flex = (props: FlexProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const flex = compose(flexConfig)

@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Props, ThemeProp, Config, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Props, Config, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type BorderProps = Props<{
   border: CSS.Property.Border
@@ -31,34 +31,32 @@ export type BorderProps = Props<{
   borderLeftColor: ThemeValues<'colors'> | CSS.Property.BorderLeftColor
 }>
 
-const config: Config[] = [
-  { property: 'border' },
-  { property: 'borderWidth', scope: 'borderWidths' },
-  { property: 'borderStyle' },
-  { property: 'borderColor', scope: 'colors' },
-  { property: 'borderRadius', scope: 'radii' },
-  { property: 'borderTop' },
-  { property: 'borderTopWidth', scope: 'borderWidths' },
-  { property: 'borderTopStyle' },
-  { property: 'borderTopColor', scope: 'colors' },
-  { property: 'borderTopLeftRadius', scope: 'radii' },
-  { property: 'borderTopRightRadius', scope: 'radii' },
-  { property: 'borderRight' },
-  { property: 'borderRightWidth', scope: 'borderWidths' },
-  { property: 'borderRightStyle' },
-  { property: 'borderRightColor', scope: 'colors' },
-  { property: 'borderBottom' },
-  { property: 'borderBottomWidth', scope: 'borderWidths' },
-  { property: 'borderBottomStyle' },
-  { property: 'borderBottomColor', scope: 'colors' },
-  { property: 'borderBottomLeftRadius', scope: 'radii' },
-  { property: 'borderBottomRightRadius', scope: 'radii' },
-  { property: 'borderLeft' },
-  { property: 'borderLeftWidth', scope: 'borderWidths' },
-  { property: 'borderLeftStyle' },
-  { property: 'borderLeftColor', scope: 'colors' },
+export const borderConfig: Config[] = [
+  { jsxProperty: 'border' },
+  { jsxProperty: 'borderWidth', scope: 'borderWidths' },
+  { jsxProperty: 'borderStyle' },
+  { jsxProperty: 'borderColor', scope: 'colors' },
+  { jsxProperty: 'borderRadius', scope: 'radii' },
+  { jsxProperty: 'borderTop' },
+  { jsxProperty: 'borderTopWidth', scope: 'borderWidths' },
+  { jsxProperty: 'borderTopStyle' },
+  { jsxProperty: 'borderTopColor', scope: 'colors' },
+  { jsxProperty: 'borderTopLeftRadius', scope: 'radii' },
+  { jsxProperty: 'borderTopRightRadius', scope: 'radii' },
+  { jsxProperty: 'borderRight' },
+  { jsxProperty: 'borderRightWidth', scope: 'borderWidths' },
+  { jsxProperty: 'borderRightStyle' },
+  { jsxProperty: 'borderRightColor', scope: 'colors' },
+  { jsxProperty: 'borderBottom' },
+  { jsxProperty: 'borderBottomWidth', scope: 'borderWidths' },
+  { jsxProperty: 'borderBottomStyle' },
+  { jsxProperty: 'borderBottomColor', scope: 'colors' },
+  { jsxProperty: 'borderBottomLeftRadius', scope: 'radii' },
+  { jsxProperty: 'borderBottomRightRadius', scope: 'radii' },
+  { jsxProperty: 'borderLeft' },
+  { jsxProperty: 'borderLeftWidth', scope: 'borderWidths' },
+  { jsxProperty: 'borderLeftStyle' },
+  { jsxProperty: 'borderLeftColor', scope: 'colors' },
 ]
 
-export const border = (props: BorderProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const border = compose(borderConfig)

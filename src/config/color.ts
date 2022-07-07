@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type ColorProps = Props<{
   color: ThemeValues<'colors'> | CSS.Property.Color
@@ -9,12 +9,10 @@ export type ColorProps = Props<{
   opacity: CSS.Property.Opacity
 }>
 
-const config: Config[] = [
-  { property: 'color', scope: 'colors' },
-  { property: 'backgroundColor', scope: 'colors' },
-  { property: 'opacity' },
+export const colorConfig: Config[] = [
+  { jsxProperty: 'color', scope: 'colors' },
+  { jsxProperty: 'backgroundColor', scope: 'colors' },
+  { jsxProperty: 'opacity' },
 ]
 
-export const color = (props: ColorProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const color = compose(colorConfig)

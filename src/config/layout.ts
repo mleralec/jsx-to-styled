@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type LayoutProps = Props<{
   w: ThemeValues<'sizes'> | CSS.Property.Width
@@ -17,20 +17,18 @@ export type LayoutProps = Props<{
   overflowY: CSS.Property.OverflowY
 }>
 
-const config: Config[] = [
-  { property: 'w', scope: 'sizes' },
-  { property: 'h', scope: 'sizes' },
-  { property: 'minW', scope: 'sizes' },
-  { property: 'maxW', scope: 'sizes' },
-  { property: 'minH', scope: 'sizes' },
-  { property: 'maxH', scope: 'sizes' },
-  { property: 'display' },
-  { property: 'verticalAlign' },
-  { property: 'overflow' },
-  { property: 'overflowX' },
-  { property: 'overflowY' },
+export const layoutConfig: Config[] = [
+  { jsxProperty: 'w', scope: 'sizes', cssProperties: ['width'] },
+  { jsxProperty: 'h', scope: 'sizes', cssProperties: ['height'] },
+  { jsxProperty: 'minW', scope: 'sizes', cssProperties: ['minWidth'] },
+  { jsxProperty: 'maxW', scope: 'sizes', cssProperties: ['maxWidth'] },
+  { jsxProperty: 'minH', scope: 'sizes', cssProperties: ['minHeight'] },
+  { jsxProperty: 'maxH', scope: 'sizes', cssProperties: ['maxHeight'] },
+  { jsxProperty: 'display' },
+  { jsxProperty: 'verticalAlign' },
+  { jsxProperty: 'overflow' },
+  { jsxProperty: 'overflowX' },
+  { jsxProperty: 'overflowY' },
 ]
 
-export const layout = (props: LayoutProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const layout = compose(layoutConfig)

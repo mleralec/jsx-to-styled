@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type TypographyProps = Props<{
   fontFamily: ThemeValues<'fonts'> | CSS.Property.FontFamily
@@ -14,17 +14,15 @@ export type TypographyProps = Props<{
   textDecoration: CSS.Property.TextDecoration
 }>
 
-const config: Config[] = [
-  { property: 'fontFamily', scope: 'fonts' },
-  { property: 'fontSize', scope: 'fontSizes' },
-  { property: 'fontWeight', scope: 'fontWeights' },
-  { property: 'lineHeight', scope: 'lineHeights' },
-  { property: 'letterSpacing', scope: 'letterSpacings' },
-  { property: 'textAlign' },
-  { property: 'fontStyle' },
-  { property: 'textDecoration' },
+export const typographyConfig: Config[] = [
+  { jsxProperty: 'fontFamily', scope: 'fonts' },
+  { jsxProperty: 'fontSize', scope: 'fontSizes' },
+  { jsxProperty: 'fontWeight', scope: 'fontWeights' },
+  { jsxProperty: 'lineHeight', scope: 'lineHeights' },
+  { jsxProperty: 'letterSpacing', scope: 'letterSpacings' },
+  { jsxProperty: 'textAlign' },
+  { jsxProperty: 'fontStyle' },
+  { jsxProperty: 'textDecoration' },
 ]
 
-export const typography = (props: TypographyProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const typography = compose(typographyConfig)

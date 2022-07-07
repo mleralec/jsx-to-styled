@@ -1,4 +1,4 @@
 export * from './config'
 export * from './theme'
-export * from './system'
-export { system as default } from './system'
+export { compose } from './utils'
+export { system, system as default } from './system'

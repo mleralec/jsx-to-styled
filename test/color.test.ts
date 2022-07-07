@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { color } from '../../src'
+import { color } from '../src'
 
 const props = {
   color: undefined,
@@ -31,10 +31,4 @@ describe('color', () => {
     }
     expect(color({ ...props, color: 'primary.500', theme })).toEqual({ ...props, color: 'tomato' })
   })
-
-  // it('return responsive color', () => {
-  //   const theme = {
-  //     colors: {},
-  //   }
-  // })
 })

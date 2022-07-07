@@ -5,12 +5,7 @@
 
 ## 📝 What it is ?
 
-Inspired by [xstyled](https://xstyled.dev/) and [styled-system](https://styled-system.com/), **jsx-to-styled** adds styled props to your React styled-components. The main idea of this library is to stay really **simple** and **performant** :
-
-- no responsive helpers
-- no states helpers (hover, focus...)
-- `string` is the only valid type for the value of styled props
-- no dependencies
+Inspired by [xstyled](https://xstyled.dev/) and [styled-system](https://styled-system.com/), **jsx-to-styled** adds styled props to your React styled-components. The main idea of this library is to stay really **simple** and **performant**.
 
 > If you want to add some responsives or states style, you have to do it inside a styled-component
 
@@ -99,6 +94,26 @@ type MyTheme = typeof theme
 declare module 'jsx-to-styled' {
   export interface Theme extends MyTheme {}
 }
+```
+
+## 🍱 States
+
+You can use **states** in your styled props ([codesandbox example](https://codesandbox.io/s/states-x587p5?file=/src/App.tsx))
+
+```tsx
+// add "states" key in your theme
+const theme = {
+  colors: {
+    primary: 'white',
+    secondary: 'tomato',
+  },
+  states: {
+    hover: '&:hover',
+  },
+}
+
+// now you can use props with object style
+return <Box color={{ _: 'primary', hover: 'secondary' }}>Hello World!</Box>
 ```
 
 ## 📕 Props

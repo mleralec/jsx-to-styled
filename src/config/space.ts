@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type SpaceProps = Props<{
   m: ThemeValues<'spaces'> | CSS.Property.Margin
@@ -20,23 +20,21 @@ export type SpaceProps = Props<{
   px: ThemeValues<'spaces'> | CSS.Property.Padding
 }>
 
-const config: Config[] = [
-  { property: 'm', scope: 'spaces' },
-  { property: 'mt', scope: 'spaces' },
-  { property: 'mr', scope: 'spaces' },
-  { property: 'mb', scope: 'spaces' },
-  { property: 'ml', scope: 'spaces' },
-  { property: 'my', scope: 'spaces' },
-  { property: 'mx', scope: 'spaces' },
-  { property: 'p', scope: 'spaces' },
-  { property: 'pt', scope: 'spaces' },
-  { property: 'pr', scope: 'spaces' },
-  { property: 'pb', scope: 'spaces' },
-  { property: 'pl', scope: 'spaces' },
-  { property: 'py', scope: 'spaces' },
-  { property: 'px', scope: 'spaces' },
+export const spaceConfig: Config[] = [
+  { jsxProperty: 'm', scope: 'spaces', cssProperties: ['margin'] },
+  { jsxProperty: 'mt', scope: 'spaces', cssProperties: ['marginTop'] },
+  { jsxProperty: 'mr', scope: 'spaces', cssProperties: ['marginRight'] },
+  { jsxProperty: 'mb', scope: 'spaces', cssProperties: ['marginBottom'] },
+  { jsxProperty: 'ml', scope: 'spaces', cssProperties: ['marginLeft'] },
+  { jsxProperty: 'my', scope: 'spaces', cssProperties: ['marginTop', 'marginBottom'] },
+  { jsxProperty: 'mx', scope: 'spaces', cssProperties: ['marginRight', 'marginLeft'] },
+  { jsxProperty: 'p', scope: 'spaces', cssProperties: ['padding'] },
+  { jsxProperty: 'pt', scope: 'spaces', cssProperties: ['paddingTop'] },
+  { jsxProperty: 'pr', scope: 'spaces', cssProperties: ['paddingRight'] },
+  { jsxProperty: 'pb', scope: 'spaces', cssProperties: ['paddingBottom'] },
+  { jsxProperty: 'pl', scope: 'spaces', cssProperties: ['paddingLeft'] },
+  { jsxProperty: 'py', scope: 'spaces', cssProperties: ['paddingTop', 'paddingBottom'] },
+  { jsxProperty: 'px', scope: 'spaces', cssProperties: ['paddingRight', 'paddingLeft'] },
 ]
 
-export const space = (props: SpaceProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const space = compose(spaceConfig)

@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props } from '../types'
+import { compose } from '../utils'
 
 export type OtherProps = Props<{
   cursor: CSS.Property.Cursor
@@ -12,15 +12,13 @@ export type OtherProps = Props<{
   visibility: CSS.Property.Visibility
 }>
 
-const config: Config[] = [
-  { property: 'cursor' },
-  { property: 'float' },
-  { property: 'objectFit' },
-  { property: 'objectPosition' },
-  { property: 'transform' },
-  { property: 'visibility' },
+export const otherConfig: Config[] = [
+  { jsxProperty: 'cursor' },
+  { jsxProperty: 'float' },
+  { jsxProperty: 'objectFit' },
+  { jsxProperty: 'objectPosition' },
+  { jsxProperty: 'transform' },
+  { jsxProperty: 'visibility' },
 ]
 
-export const other = (props: OtherProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const other = compose(otherConfig)

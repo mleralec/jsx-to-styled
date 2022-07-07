@@ -1,7 +1,7 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeProp, ThemeValues } from '../types'
-import { getStyles } from '../utils'
+import type { Config, Props, ThemeValues } from '../types'
+import { compose } from '../utils'
 
 export type PositionProps = Props<{
   position: CSS.Property.Position
@@ -12,15 +12,13 @@ export type PositionProps = Props<{
   left: ThemeValues<'spaces'> | CSS.Property.Left
 }>
 
-const config: Config[] = [
-  { property: 'position' },
-  { property: 'zIndex' },
-  { property: 'top', scope: 'spaces' },
-  { property: 'right', scope: 'spaces' },
-  { property: 'bottom', scope: 'spaces' },
-  { property: 'left', scope: 'spaces' },
+export const positionConfig: Config[] = [
+  { jsxProperty: 'position' },
+  { jsxProperty: 'zIndex' },
+  { jsxProperty: 'top', scope: 'spaces' },
+  { jsxProperty: 'right', scope: 'spaces' },
+  { jsxProperty: 'bottom', scope: 'spaces' },
+  { jsxProperty: 'left', scope: 'spaces' },
 ]
 
-export const position = (props: PositionProps & ThemeProp) => {
-  return getStyles(config, props)
-}
+export const position = compose(positionConfig)

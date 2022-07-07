@@ -19,8 +19,8 @@ const theme = {
 describe('system', () => {
   it('should get values from theme', () => {
     const props = {
-      color: 'primary',
-      m: 'sm',
+      $color: 'primary',
+      $m: 'sm',
       theme,
     }
 
@@ -29,8 +29,8 @@ describe('system', () => {
 
   it('should fallback without theme', () => {
     const props = {
-      color: 'primary',
-      m: 'sm',
+      $color: 'primary',
+      $m: 'sm',
     }
 
     expect(system(props)).toEqual({ color: 'primary', margin: 'sm' })
@@ -38,8 +38,8 @@ describe('system', () => {
 
   it('should apply hover style', () => {
     const props = {
-      color: { _: 'primary', hover: 'secondary' },
-      m: 'sm',
+      $color: { _: 'primary', hover: 'secondary' },
+      $m: 'sm',
       theme,
     }
 
@@ -54,8 +54,8 @@ describe('system', () => {
 
   it('should not apply hover style if theme.space.hover does not exist', () => {
     const props = {
-      color: { _: 'primary', hover: 'secondary', '&:hover': 'secondary' },
-      m: 'sm',
+      $color: { _: 'primary', hover: 'secondary', '&:hover': 'secondary' },
+      $m: 'sm',
       theme: { ...theme, states: undefined },
     }
 
@@ -67,8 +67,8 @@ describe('system', () => {
 
   it('should apply &:hover style on multiple props', () => {
     const props = {
-      color: { _: 'primary', hover: 'secondary' },
-      m: { _: 'sm', hover: 'md' },
+      $color: { _: 'primary', hover: 'secondary' },
+      $m: { _: 'sm', hover: 'md' },
       theme,
     }
 

@@ -13,6 +13,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
 
   config.forEach(({ jsxProperty, scope, cssProperties }) => {
     const value = props[jsxProperty]
+    const formattedJsxProperty = jsxProperty.substring(1)
     const { theme } = props
 
     if (!value) return
@@ -23,7 +24,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
           styles[cssProp] = get(value, theme, scope)
         })
       } else {
-        styles[jsxProperty as string] = get(value, theme, scope)
+        styles[formattedJsxProperty] = get(value, theme, scope)
       }
     }
 
@@ -40,7 +41,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
               styles[cssProp] = get(v, theme, scope)
             })
           } else {
-            styles[jsxProperty as string] = get(v, theme, scope)
+            styles[formattedJsxProperty] = get(v, theme, scope)
           }
         }
 
@@ -53,7 +54,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
               s[cssProp] = get(v, props.theme, scope)
             })
           } else {
-            s[jsxProperty as string] = get(v, props.theme, scope)
+            s[formattedJsxProperty] = get(v, props.theme, scope)
           }
 
           styles[state] = { ...(styles[state] as CSSObject), ...s }

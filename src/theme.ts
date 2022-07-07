@@ -12,6 +12,7 @@ export type ThemeKeys =
   | 'borderWidths'
   | 'radii'
   | 'states'
+  | 'breakpoints'
   | (string & Record<never, never>)
 
 /**

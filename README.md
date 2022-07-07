@@ -7,7 +7,7 @@
 
 Inspired by [xstyled](https://xstyled.dev/) and [styled-system](https://styled-system.com/), **jsx-to-styled** adds styled props to your React styled-components. The main idea of this library is to stay really **simple** and **performant**.
 
-> All styled props injected by **jsx-to-styled** are prefixed by `$` symbol to prevent forwarding props to html element, check the [styled-component transiant props section](https://styled-components.com/docs/api#transient-props) for more informations.
+> All styled props injected by **jsx-to-styled** are prefixed by `$` symbol to prevent forwarding props to html element, check the [styled-components transiant props section](https://styled-components.com/docs/api#transient-props) for more informations.
 
 ## 🔧 Installation
 
@@ -94,6 +94,35 @@ type MyTheme = typeof theme
 declare module 'jsx-to-styled' {
   export interface Theme extends MyTheme {}
 }
+```
+
+## 📱 Responsive (breakpoints)
+
+You can use **breakpoints** in your styled props ([codesandbox example](https://codesandbox.io/s/breakpoints-lun0gq?file=/src/App.tsx))
+
+```tsx
+// add "breakpoints" key in your theme
+const theme = {
+  colors: {
+    primary: 'white',
+    secondary: 'tomato',
+  },
+  breakpoints: {
+    sm: '600px',
+  },
+}
+
+// now you can use props with object style
+return (
+  <Box $display="flex" $flexDirection={{ _: 'row', sm: 'column' }}>
+    <Box $w="200px" $h="200px">
+      A
+    </Box>
+    <Box $w="200px" $h="200px">
+      B
+    </Box>
+  </Box>
+)
 ```
 
 ## 🍱 States

@@ -6,10 +6,31 @@ const get = (key: string, theme: Theme, scope: ThemeKeys): string => {
   return theme?.[scope]?.[key] || key
 }
 
-// const createMediaQuery = (breakpoint: string) => `@media(min-width: ${breakpoint})`
+const createMediaQuery = (breakpoint: string) => `@media(min-width: ${breakpoint})`
+
+const parse = (
+  cssProperties: string[],
+  jsxProperty: string,
+  value: string,
+  theme: Theme,
+  scope: ThemeKeys
+) => {
+  const styles: CSSObject = {}
+  const result = get(value, theme, scope)
+
+  if (cssProperties) {
+    cssProperties.forEach(cssProp => {
+      styles[cssProp] = result
+    })
+  } else {
+    styles[jsxProperty] = result
+  }
+
+  return styles
+}
 
 export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
-  const styles: CSSObject = {}
+  let styles: CSSObject = {}
 
   config.forEach(({ jsxProperty, scope, cssProperties }) => {
     const value = props[jsxProperty]
@@ -19,12 +40,9 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
     if (!value) return
 
     if (typeof value === 'string') {
-      if (cssProperties) {
-        cssProperties.forEach(cssProp => {
-          styles[cssProp] = get(value, theme, scope)
-        })
-      } else {
-        styles[formattedJsxProperty] = get(value, theme, scope)
+      styles = {
+        ...styles,
+        ...parse(cssProperties, formattedJsxProperty, value, theme, scope),
       }
     }
 
@@ -36,33 +54,28 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
         const v = value[key as ObjectPropsKey] as string
 
         if (key === '_') {
-          if (cssProperties) {
-            cssProperties.forEach(cssProp => {
-              styles[cssProp] = get(v, theme, scope)
-            })
-          } else {
-            styles[formattedJsxProperty] = get(v, theme, scope)
+          styles = {
+            ...styles,
+            ...parse(cssProperties, formattedJsxProperty, v, theme, scope),
           }
         }
 
         if (states.includes(key)) {
           const state = theme.states[key]
-          const s: CSSObject = {}
 
-          if (cssProperties) {
-            cssProperties.forEach(cssProp => {
-              s[cssProp] = get(v, props.theme, scope)
-            })
-          } else {
-            s[formattedJsxProperty] = get(v, props.theme, scope)
+          styles[state] = {
+            ...(styles[state] as CSSObject),
+            ...parse(cssProperties, formattedJsxProperty, v, theme, scope),
           }
-
-          styles[state] = { ...(styles[state] as CSSObject), ...s }
         }
 
         if (breakpoints.includes(key)) {
-          // todo apply breakpoints styles
-          // styles[createMediaQuery(breakpoint)] = get(v, props.theme, scope)
+          const breakpoint = createMediaQuery(theme.breakpoints[key])
+
+          styles[breakpoint] = {
+            ...(styles[breakpoint] as CSSObject),
+            ...parse(cssProperties, formattedJsxProperty, v, theme, scope),
+          }
         }
       })
     }

@@ -11,6 +11,9 @@ const theme = {
     sm: '10px',
     md: '20px',
   },
+  breakpoints: {
+    md: '1000px',
+  },
   states: {
     hover: '&:hover',
   },
@@ -76,6 +79,44 @@ describe('system', () => {
       color: 'tomato',
       margin: '10px',
       '&:hover': {
+        color: 'purple',
+        margin: '20px',
+      },
+    })
+  })
+
+  it('should apply responsive props', () => {
+    const props = {
+      $color: { _: 'primary', md: 'secondary' },
+      $m: { _: 'sm', md: 'md' },
+      theme,
+    }
+
+    expect(system(props)).toEqual({
+      color: 'tomato',
+      margin: '10px',
+      '@media(min-width: 1000px)': {
+        color: 'purple',
+        margin: '20px',
+      },
+    })
+  })
+
+  it('should apply responsive & hover props', () => {
+    const props = {
+      $color: { _: 'primary', md: 'secondary', hover: 'secondary' },
+      $m: { _: 'sm', md: 'md', hover: 'md' },
+      theme,
+    }
+
+    expect(system(props)).toEqual({
+      color: 'tomato',
+      margin: '10px',
+      '&:hover': {
+        color: 'purple',
+        margin: '20px',
+      },
+      '@media(min-width: 1000px)': {
         color: 'purple',
         margin: '20px',
       },

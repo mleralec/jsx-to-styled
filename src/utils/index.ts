@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components'
 import type { Theme, ThemeKeys } from '../theme'
-import type { Config, ThemeProp, SystemProps } from '../types'
+import type { Config, ThemeProp, SystemProps, ObjectPropsKey } from '../types'
 
 const get = (key: string, theme: Theme, scope: ThemeKeys): string => {
   return theme?.[scope]?.[key] || key
@@ -32,7 +32,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
       const breakpoints = Object.keys(theme?.breakpoints || {})
 
       Object.keys(value).forEach(key => {
-        const v = value[key] as unknown as string
+        const v = value[key as ObjectPropsKey] as string
 
         if (key === '_') {
           if (cssProperties) {

@@ -1,12 +1,12 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeValues } from '../types'
+import type { Config, Props, ThemeValues, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type ColorProps = Props<{
-  color: ThemeValues<'colors'> | CSS.Property.Color
-  backgroundColor: ThemeValues<'colors'> | CSS.Property.BackgroundColor
-  opacity: CSS.Property.Opacity
+  color: ObjectProps<ThemeValues<'colors'> | CSS.Property.Color>
+  backgroundColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BackgroundColor>
+  opacity: ObjectProps<CSS.Property.Opacity>
 }>
 
 export const colorConfig: Config[] = [

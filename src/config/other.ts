@@ -1,15 +1,15 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props } from '../types'
+import type { Config, Props, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type OtherProps = Props<{
-  cursor: CSS.Property.Cursor
-  float: CSS.Property.Float
-  objectFit: CSS.Property.ObjectFit
-  objectPosition: CSS.Property.ObjectPosition
-  transform: CSS.Property.Transform
-  visibility: CSS.Property.Visibility
+  cursor: ObjectProps<CSS.Property.Cursor>
+  float: ObjectProps<CSS.Property.Float>
+  objectFit: ObjectProps<CSS.Property.ObjectFit>
+  objectPosition: ObjectProps<CSS.Property.ObjectPosition>
+  transform: ObjectProps<CSS.Property.Transform>
+  visibility: ObjectProps<CSS.Property.Visibility>
 }>
 
 export const otherConfig: Config[] = [

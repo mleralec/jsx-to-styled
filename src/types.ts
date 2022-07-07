@@ -16,15 +16,21 @@ type ExcludeNumbers<T> = {
   [Key in keyof T]: Exclude<T[Key], number | symbol>
 }
 
-type ObjectPropsKey = keyof Theme['states'] | keyof Theme['breakpoints'] | '_'
-
-type ObjectProps<T> = {
-  [Key in keyof T]: {
-    [key: ObjectPropsKey]: ExcludeNumbers<T[Key]>
-  }
+type ObjectPropsThemeKey<T> = T extends {
+  breakpoints: Record<never, never>
+  states: Record<never, never>
 }
+  ? keyof T['breakpoints'] | keyof T['states']
+  : T extends { breakpoints: Record<never, never> }
+  ? keyof T['breakpoints']
+  : T extends { states: Record<never, never> }
+  ? keyof T['states']
+  : never
 
-export type Props<P> = Partial<ExcludeNumbers<P> | ObjectProps<P>>
+export type ObjectPropsKey = '_' | ObjectPropsThemeKey<Theme>
+export type ObjectProps<P> = P | Partial<Record<ObjectPropsKey, P>>
+
+export type Props<P> = Partial<ExcludeNumbers<P>>
 
 export type ThemeProp = Partial<{ theme: Theme }>
 

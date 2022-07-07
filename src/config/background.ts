@@ -1,14 +1,14 @@
 import type * as CSS from 'csstype'
 
-import type { Props, Config } from '../types'
+import type { Props, Config, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type BackgroundProps = Props<{
-  background: CSS.Property.Background
-  backgroundImage: CSS.Property.BackgroundImage
-  backgroundSize: CSS.Property.BackgroundSize
-  backgroundPosition: CSS.Property.BackgroundPosition
-  backgroundRepeat: CSS.Property.BackgroundRepeat
+  background: ObjectProps<CSS.Property.Background>
+  backgroundImage: ObjectProps<CSS.Property.BackgroundImage>
+  backgroundSize: ObjectProps<CSS.Property.BackgroundSize>
+  backgroundPosition: ObjectProps<CSS.Property.BackgroundPosition>
+  backgroundRepeat: ObjectProps<CSS.Property.BackgroundRepeat>
 }>
 
 export const backgroundConfig: Config[] = [

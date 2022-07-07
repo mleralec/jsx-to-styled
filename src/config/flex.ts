@@ -1,22 +1,22 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props } from '../types'
+import type { Config, Props, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type FlexProps = Props<{
-  alignItems: CSS.Property.AlignItems
-  alignContent: CSS.Property.AlignContent
-  justifyItems: CSS.Property.JustifyItems
-  justifyContent: CSS.Property.JustifyContent
-  flex: CSS.Property.Flex
-  flexBasis: CSS.Property.FlexBasis
-  flexDirection: CSS.Property.FlexDirection
-  flexGrow: CSS.Property.FlexGrow
-  flexShrink: CSS.Property.FlexShrink
-  flexWrap: CSS.Property.FlexWrap
-  justifySelf: CSS.Property.JustifySelf
-  alignSelf: CSS.Property.AlignSelf
-  order: CSS.Property.Order
+  alignItems: ObjectProps<CSS.Property.AlignItems>
+  alignContent: ObjectProps<CSS.Property.AlignContent>
+  justifyItems: ObjectProps<CSS.Property.JustifyItems>
+  justifyContent: ObjectProps<CSS.Property.JustifyContent>
+  flex: ObjectProps<CSS.Property.Flex>
+  flexBasis: ObjectProps<CSS.Property.FlexBasis>
+  flexDirection: ObjectProps<CSS.Property.FlexDirection>
+  flexGrow: ObjectProps<CSS.Property.FlexGrow>
+  flexShrink: ObjectProps<CSS.Property.FlexShrink>
+  flexWrap: ObjectProps<CSS.Property.FlexWrap>
+  justifySelf: ObjectProps<CSS.Property.JustifySelf>
+  alignSelf: ObjectProps<CSS.Property.AlignSelf>
+  order: ObjectProps<CSS.Property.Order>
 }>
 
 export const flexConfig: Config[] = [

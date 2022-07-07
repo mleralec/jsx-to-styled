@@ -1,15 +1,15 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeValues } from '../types'
+import type { Config, ObjectProps, Props, ThemeValues } from '../types'
 import { compose } from '../utils'
 
 export type PositionProps = Props<{
-  position: CSS.Property.Position
-  zIndex: CSS.Property.ZIndex
-  top: ThemeValues<'spaces'> | CSS.Property.Top
-  right: ThemeValues<'spaces'> | CSS.Property.Right
-  bottom: ThemeValues<'spaces'> | CSS.Property.Bottom
-  left: ThemeValues<'spaces'> | CSS.Property.Left
+  position: ObjectProps<CSS.Property.Position>
+  zIndex: ObjectProps<CSS.Property.ZIndex>
+  top: ObjectProps<ThemeValues<'spaces'> | CSS.Property.Top>
+  right: ObjectProps<ThemeValues<'spaces'> | CSS.Property.Right>
+  bottom: ObjectProps<ThemeValues<'spaces'> | CSS.Property.Bottom>
+  left: ObjectProps<ThemeValues<'spaces'> | CSS.Property.Left>
 }>
 
 export const positionConfig: Config[] = [

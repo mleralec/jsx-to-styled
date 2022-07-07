@@ -1,34 +1,34 @@
 import type * as CSS from 'csstype'
 
-import type { Props, Config, ThemeValues } from '../types'
+import type { Props, Config, ThemeValues, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type BorderProps = Props<{
-  border: CSS.Property.Border
-  borderWidth: ThemeValues<'borderWidths'> | CSS.Property.BorderWidth
-  borderStyle: CSS.Property.BorderStyle
-  borderColor: ThemeValues<'colors'> | CSS.Property.BorderColor
-  borderRadius: ThemeValues<'radii'> | CSS.Property.BorderRadius
-  borderTop: CSS.Property.BorderTop
-  borderTopWidth: ThemeValues<'borderWidths'> | CSS.Property.BorderTopWidth
-  borderTopStyle: CSS.Property.BorderTopStyle
-  borderTopColor: ThemeValues<'colors'> | CSS.Property.BorderTopColor
-  borderTopLeftRadius: ThemeValues<'radii'> | CSS.Property.BorderTopLeftRadius
-  borderTopRightRadius: ThemeValues<'radii'> | CSS.Property.BorderTopRightRadius
-  borderRight: CSS.Property.BorderRight
-  borderRightWidth: ThemeValues<'borderWidths'> | CSS.Property.BorderRightWidth
-  borderRightStyle: CSS.Property.BorderRightStyle
-  borderRightColor: ThemeValues<'colors'> | CSS.Property.BorderRightColor
-  borderBottom: CSS.Property.BorderBottom
-  borderBottomWidth: ThemeValues<'borderWidths'> | CSS.Property.BorderBottomWidth
-  borderBottomStyle: CSS.Property.BorderBottomStyle
-  borderBottomColor: ThemeValues<'colors'> | CSS.Property.BorderBottomColor
-  borderBottomLeftRadius: ThemeValues<'radii'> | CSS.Property.BorderBottomLeftRadius
-  borderBottomRightRadius: ThemeValues<'radii'> | CSS.Property.BorderBottomRightRadius
-  borderLeft: CSS.Property.BorderLeft
-  borderLeftWidth: ThemeValues<'borderWidths'> | CSS.Property.BorderLeftWidth
-  borderLeftStyle: CSS.Property.BorderLeftStyle
-  borderLeftColor: ThemeValues<'colors'> | CSS.Property.BorderLeftColor
+  border: ObjectProps<CSS.Property.Border>
+  borderWidth: ObjectProps<ThemeValues<'borderWidths'> | CSS.Property.BorderWidth>
+  borderStyle: ObjectProps<CSS.Property.BorderStyle>
+  borderColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BorderColor>
+  borderRadius: ObjectProps<ThemeValues<'radii'> | CSS.Property.BorderRadius>
+  borderTop: ObjectProps<CSS.Property.BorderTop>
+  borderTopWidth: ObjectProps<ThemeValues<'borderWidths'> | CSS.Property.BorderTopWidth>
+  borderTopStyle: ObjectProps<CSS.Property.BorderTopStyle>
+  borderTopColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BorderTopColor>
+  borderTopLeftRadius: ObjectProps<ThemeValues<'radii'> | CSS.Property.BorderTopLeftRadius>
+  borderTopRightRadius: ObjectProps<ThemeValues<'radii'> | CSS.Property.BorderTopRightRadius>
+  borderRight: ObjectProps<CSS.Property.BorderRight>
+  borderRightWidth: ObjectProps<ThemeValues<'borderWidths'> | CSS.Property.BorderRightWidth>
+  borderRightStyle: ObjectProps<CSS.Property.BorderRightStyle>
+  borderRightColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BorderRightColor>
+  borderBottom: ObjectProps<CSS.Property.BorderBottom>
+  borderBottomWidth: ObjectProps<ThemeValues<'borderWidths'> | CSS.Property.BorderBottomWidth>
+  borderBottomStyle: ObjectProps<CSS.Property.BorderBottomStyle>
+  borderBottomColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BorderBottomColor>
+  borderBottomLeftRadius: ObjectProps<ThemeValues<'radii'> | CSS.Property.BorderBottomLeftRadius>
+  borderBottomRightRadius: ObjectProps<ThemeValues<'radii'> | CSS.Property.BorderBottomRightRadius>
+  borderLeft: ObjectProps<CSS.Property.BorderLeft>
+  borderLeftWidth: ObjectProps<ThemeValues<'borderWidths'> | CSS.Property.BorderLeftWidth>
+  borderLeftStyle: ObjectProps<CSS.Property.BorderLeftStyle>
+  borderLeftColor: ObjectProps<ThemeValues<'colors'> | CSS.Property.BorderLeftColor>
 }>
 
 export const borderConfig: Config[] = [

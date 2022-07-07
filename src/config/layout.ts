@@ -1,20 +1,20 @@
 import type * as CSS from 'csstype'
 
-import type { Config, Props, ThemeValues } from '../types'
+import type { Config, Props, ThemeValues, ObjectProps } from '../types'
 import { compose } from '../utils'
 
 export type LayoutProps = Props<{
-  w: ThemeValues<'sizes'> | CSS.Property.Width
-  h: ThemeValues<'sizes'> | CSS.Property.Height
-  minW: ThemeValues<'sizes'> | CSS.Property.MinWidth
-  maxW: ThemeValues<'sizes'> | CSS.Property.MaxWidth
-  minH: ThemeValues<'sizes'> | CSS.Property.MinHeight
-  maxH: ThemeValues<'sizes'> | CSS.Property.MaxHeight
-  display: CSS.Property.Display
-  verticalAlign: CSS.Property.VerticalAlign
-  overflow: CSS.Property.Overflow
-  overflowX: CSS.Property.OverflowX
-  overflowY: CSS.Property.OverflowY
+  w: ObjectProps<ThemeValues<'sizes'> | CSS.Property.Width>
+  h: ObjectProps<ThemeValues<'sizes'> | CSS.Property.Height>
+  minW: ObjectProps<ThemeValues<'sizes'> | CSS.Property.MinWidth>
+  maxW: ObjectProps<ThemeValues<'sizes'> | CSS.Property.MaxWidth>
+  minH: ObjectProps<ThemeValues<'sizes'> | CSS.Property.MinHeight>
+  maxH: ObjectProps<ThemeValues<'sizes'> | CSS.Property.MaxHeight>
+  display: ObjectProps<CSS.Property.Display>
+  verticalAlign: ObjectProps<CSS.Property.VerticalAlign>
+  overflow: ObjectProps<CSS.Property.Overflow>
+  overflowX: ObjectProps<CSS.Property.OverflowX>
+  overflowY: ObjectProps<CSS.Property.OverflowY>
 }>
 
 export const layoutConfig: Config[] = [

@@ -112,15 +112,11 @@ const theme = {
   },
 }
 
-// now you can use props with object style
+// flexDirection will be "column" by default and "row" on screens > 600px
 return (
-  <Box $display="flex" $flexDirection={{ _: 'row', sm: 'column' }}>
-    <Box $w="200px" $h="200px">
-      A
-    </Box>
-    <Box $w="200px" $h="200px">
-      B
-    </Box>
+  <Box $display="flex" $flexDirection={{ _: 'column', sm: 'row' }}>
+    <Box>A</Box>
+    <Box>B</Box>
   </Box>
 )
 ```
@@ -141,7 +137,7 @@ const theme = {
   },
 }
 
-// now you can use props with object style
+// color will be "white" by default and "tomato" on hover
 return <Box $color={{ _: 'primary', hover: 'secondary' }}>Hello World!</Box>
 ```
 

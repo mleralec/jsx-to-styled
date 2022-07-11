@@ -42,10 +42,10 @@ Or use with a theme to use custom values ([codesandbox example](https://codesand
 
 ```tsx
 import styled, { ThemeProvider } from 'styled-components'
-import system, { System } from 'jsx-to-styled'
+import system from 'jsx-to-styled'
 
 // create your styled component with system props
-const Box = styled.div<System>(system)
+const Box = styled.div(system)
 
 // create your theme
 const theme = {
@@ -76,10 +76,10 @@ return (
 Thanks to [csstype](https://github.com/frenic/csstype), **jsx-to-styled** is fully typed. You will have autocomplete for all possible css values.
 
 ```tsx
-import system, { System } from 'jsx-to-styled'
+import system, { SystemProps } from 'jsx-to-styled'
 
-// don't forget to add System type to your styled-component definition
-const Box = styled.div<System>(system)
+// don't forget to add SystemProps type to your styled-component definition
+const Box = styled.div<SystemProps>(system)
 ```
 
 If you want to access to your theme values, you have to redefine "Theme" interface with your custom theme like that:

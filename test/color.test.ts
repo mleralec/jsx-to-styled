@@ -18,6 +18,11 @@ describe('color', () => {
     expect(color(p)).toEqual({ color: 'tomato' })
   })
 
+  it('return tomato color with empty theme', () => {
+    const p = { theme: {}, $color: 'tomato' }
+    expect(color(p)).toEqual({ color: 'tomato' })
+  })
+
   it('return primary.500 key without theme', () => {
     const p = { ...props, $color: 'primary.500' }
     expect(color(p)).toEqual({ color: 'primary.500' })

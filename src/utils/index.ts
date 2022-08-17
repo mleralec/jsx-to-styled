@@ -29,15 +29,24 @@ const parse = (
   return styles
 }
 
-export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
+const isJsxToStyledProp = (prop: string) => prop.startsWith('$')
+
+export const getStyles = (configs: Config[], props: SystemProps & ThemeProp) => {
   let styles: CSSObject = {}
 
-  config.forEach(({ jsxProperty, scope, cssProperties }) => {
-    const value = props[jsxProperty]
-    const formattedJsxProperty = jsxProperty.substring(1)
+  for (const key in props) {
+    if (!isJsxToStyledProp(key)) continue
+
+    const value = props[key as keyof SystemProps]
+    if (!value) continue
+
+    const config = configs.find(config => config.jsxProperty === key)
+    if (!config) continue
+
+    const { scope, cssProperties, jsxProperty } = config
     const { theme } = props
 
-    if (!value) return
+    const formattedJsxProperty = jsxProperty.substring(1)
 
     if (typeof value === 'string') {
       styles = {
@@ -79,7 +88,7 @@ export const getStyles = (config: Config[], props: SystemProps & ThemeProp) => {
         }
       })
     }
-  })
+  }
 
   return styles
 }

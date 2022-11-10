@@ -215,9 +215,9 @@ return <Box $color={{ _: 'primary', hover: 'secondary' }}>Hello World!</Box>
 
 | JSX Property         | CSS property          | Theme key |
 | -------------------- | --------------------- | --------- |
-| $gridGap             | grid-gap              | spaces    |
-| $gridColumnGap       | grid-column-gap       | spaces    |
-| $gridRowGap          | grid-row-gap          | spaces    |
+| $gap                 | gap                   | spaces    |
+| $columnGap           | column-gap            | spaces    |
+| $rowGap              | row-gap               | spaces    |
 | $gridColumn          | grid-column           |           |
 | $gridRow             | grid-row              |           |
 | $gridArea            | grid-area             |           |

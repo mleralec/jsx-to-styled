@@ -286,6 +286,7 @@ return <Box $color={{ _: 'primary', hover: 'secondary' }}>Hello World!</Box>
 | $textAlign      | text-align      |                |
 | $fontStyle      | font-style      |                |
 | $textDecoration | text-decoration |                |
+| $textTransform  | text-transform  |                |
 
 ### Other
 

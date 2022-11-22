@@ -12,6 +12,7 @@ export type TypographyProps = Props<{
   $textAlign: ObjectProps<CSS.Property.TextAlign>
   $fontStyle: ObjectProps<CSS.Property.FontStyle>
   $textDecoration: ObjectProps<CSS.Property.TextDecoration>
+  $textTransform: ObjectProps<CSS.Property.TextTransform>
 }>
 
 export const typographyConfig: Config[] = [
@@ -23,6 +24,7 @@ export const typographyConfig: Config[] = [
   { jsxProperty: '$textAlign' },
   { jsxProperty: '$fontStyle' },
   { jsxProperty: '$textDecoration' },
+  { jsxProperty: '$textTransform' },
 ]
 
 export const typography = compose(typographyConfig)
